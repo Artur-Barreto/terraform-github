@@ -1,4 +1,4 @@
-name: Provision t3.micro EC2
+name: Destroy t3.micro EC2
 
 on:
   workflow_dispatch:
@@ -48,8 +48,10 @@ jobs:
         if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
     
       - name: Terraform destroy
+        env:
+          TF_VAR_ec2_name:  "${{ github.event.inputs.ec2-name }}"
         run: terraform destroy --auto-approve
         if: "${{ github.event.inputs.terraform_operation == 'destroy' }}"
             
 
-        
+
