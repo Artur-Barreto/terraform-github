@@ -39,4 +39,3 @@ jobs:
         run: |
             terraform init
             terraform validate
-            terraform destroy -auto-approve
