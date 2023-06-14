@@ -13,7 +13,6 @@ on:
         description: 'Terraform Action to Perform'
         type: choice
         options:
-            - Terraform_apply
             - Terraform_destroy
 jobs:
   provision-ec2:
