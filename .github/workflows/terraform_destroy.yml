@@ -47,10 +47,10 @@ jobs:
         run: terraform apply --auto-approve
         if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
     
-      - name: Terraform destroy
+      - name: Terraform apply -destroy
         env:
           TF_VAR_ec2_name:  "${{ github.event.inputs.ec2-name }}"
-        run: terraform destroy --auto-approve
+        run: terraform apply -destroy
         if: "${{ github.event.inputs.terraform_operation == 'destroy' }}"
             
 
