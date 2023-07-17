@@ -10,13 +10,12 @@ on:
         type: string
             # Terraform action you want to perform
       terraform_operation:
-        description: "Terraform operation: plan, apply, destroy"
+        description: "Terraform operation: plan, destroy"
         required: true
         default: "plan"
         type: choice
         options:
         - plan
-        - apply
         - destroy
 jobs:
   terraform:
@@ -42,11 +41,7 @@ jobs:
       - name: Terraform plan
         run: terraform plan
         if: "${{ github.event.inputs.terraform_operation == 'plan' }}"
-    
-      - name: Terraform apply
-        run: terraform apply --auto-approve
-        if: "${{ github.event.inputs.terraform_operation == 'apply' }}"
-    
+
       - name: Terraform apply -destroy
         env:
           TF_VAR_ec2_name:  "${{ github.event.inputs.ec2-name }}"
